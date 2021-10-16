@@ -42,14 +42,14 @@ public class MaterialesController {
 
 	@PostMapping(value = "/materiales")
 	public ResponseEntity<Materiales> create(@RequestBody Materiales materiales) {
-		Materiales nuevoPerfil = materialesService.create(materiales);
-		return new ResponseEntity<Materiales>(nuevoPerfil, HttpStatus.CREATED);
+		Materiales nuevoMaterial = materialesService.create(materiales);
+		return new ResponseEntity<Materiales>(nuevoMaterial, HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/materiales")
 	public ResponseEntity<Materiales> update(@RequestBody Materiales materiales) {
-		Materiales existePerfil = materialesService.update(materiales);
-		return new ResponseEntity<Materiales>(existePerfil, HttpStatus.OK);
+		Materiales existeMaterial = materialesService.update(materiales);
+		return new ResponseEntity<Materiales>(existeMaterial, HttpStatus.OK);
 	}
 
 }

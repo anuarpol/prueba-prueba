@@ -18,40 +18,45 @@ public class MaterialesService {
 
 	public Materiales findById(Long materialesId) {
 		Materiales materiales = materialesRepo.findById(materialesId).
-				orElseThrow(() -> new RuntimeException("No existe el perfil."));
+				orElseThrow(() -> new RuntimeException("No existe el material."));
 		return materiales;
 	}
 
 	@Transactional
 	public void delete(Long materialesId) {
 		Materiales materiales = materialesRepo.findById(materialesId)
-				.orElseThrow(() -> new RuntimeException("No existe el perfil."));
+				.orElseThrow(() -> new RuntimeException("No existe el material."));
 		materialesRepo.delete(materiales);
 	}
 
 	public List<Materiales> findAll() {
-		List<Materiales> perfiles = materialesRepo.findAll();
-		return perfiles;
+		List<Materiales> materiales = materialesRepo.findAll();
+		return materiales;
 	}
 
 	@Transactional
 	public Materiales create(Materiales materiales) {
 		MaterialesValidator.save(materiales);
-		
-		Materiales nuevoPerfil = materialesRepo.save(materiales);
-		return nuevoPerfil;
+			
+		Materiales nuevoMaterial = materialesRepo.save(materiales);
+		return nuevoMaterial;
 	}
 
 	@Transactional
 	public Materiales update(Materiales materiales) {
 		MaterialesValidator.save(materiales);
 		
-		Materiales existePerfil = materialesRepo.findById(materiales.getId())
-				.orElseThrow(() -> new RuntimeException("No existe el perfil."));
+		Materiales existeMaterial = materialesRepo.findById(materiales.getId())
+				.orElseThrow(() -> new RuntimeException("No existe el Material."));
 
-		existePerfil.setNombre(materiales.getNombre());
+		existeMaterial.setNombre(materiales.getNombre());
+		existeMaterial.setUn(materiales.getUn());
+		existeMaterial.setCategoria(materiales.getCategoria());
+		existeMaterial.setVunitario(materiales.getVunitario());
+		existeMaterial.setIva(materiales.getIva());
+		existeMaterial.setEstado(materiales.getEstado());
 		
-		materialesRepo.save(existePerfil);
-		return existePerfil;
+		materialesRepo.save(existeMaterial);
+		return existeMaterial;
 	}
 }

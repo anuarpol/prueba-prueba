@@ -21,20 +21,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="perfiles")
+@Table(name="Materiales")
 public class Materiales {
 	
 	
 	@Id
-	@Column(name="id")
+	@Column(name="cod")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="nombre", nullable = false, length = 100)
 	private String nombre;
-	
-	
+	@Column(name="un")
 	private String un;
 
+	@Column(name="categoria")
+	private String categoria;	
+	@Column(name="vunitario")
+	private String vunitario;	
+	
+	@Column(name="iva")
+	private Integer iva;
+	@Column(name="estado")
+	private String estado;	
+	
 
 }
